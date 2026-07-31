@@ -2,10 +2,17 @@
 
 **Think • Reflect • Rewrite**
 
-WordKind is an AI-powered Chrome browser extension that helps users communicate more thoughtfully on social media. Before a post is published, WordKind analyzes its tone and, when necessary, suggests respectful rewrites while encouraging reflection through relevant Scripture.
+WordKind is an AI-powered Chrome browser extension currently for **X (formerly Twitter)** that helps users communicate more thoughtfully before publishing posts. It analyzes the tone of a post in real time and, when appropriate, suggests respectful rewrites while encouraging reflection through relevant Scripture.
 
 Built for the **Gloo AI + YouVersion Hackathon**.
 
+## Current Platform Support
+
+The current prototype is designed for **X (formerly Twitter)**.
+
+WordKind monitors posts before they are published, provides AI-powered rewrite suggestions using **Gloo AI Studio**, and presents contextually relevant Scripture through the **YouVersion Platform API**.
+
+The architecture is designed to support additional social media platforms in future versions.
 ---
 
 ## Features
