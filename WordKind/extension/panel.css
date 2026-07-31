@@ -1,0 +1,221 @@
+#wordkind-panel{
+
+    position:fixed;
+    right:20px;
+    bottom:20px;
+
+    width:430px;
+    max-height:650px;
+
+    background:#f8fafc;
+
+    border-radius:18px;
+
+    overflow-y:auto;
+
+    box-shadow:0 18px 45px rgba(0,0,0,.28);
+
+    z-index:2147483647;
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    color:#1f2937;
+
+}
+
+#wordkind-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+    color:white;
+
+}
+
+.wordkind-title{
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.wordkind-subtitle{
+
+    font-size:12px;
+
+    opacity:.9;
+
+    margin-top:4px;
+
+}
+
+#wordkind-close{
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+}
+
+#wordkind-content{
+
+    padding:18px;
+
+}
+
+.wk-section{
+
+    background:white;
+
+    border-radius:14px;
+
+    padding:16px;
+
+    margin-bottom:16px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+}
+
+.wk-section h3{
+
+    margin:0 0 10px;
+
+    font-size:16px;
+
+}
+
+.wk-section p{
+
+    margin:0;
+
+    line-height:1.6;
+
+}
+
+.wk-use{
+
+    margin-top:14px;
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    border-radius:999px;
+
+    padding:10px 18px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    width:auto;
+
+}
+
+.wk-use:hover{
+
+    background:#1d4ed8;
+
+}
+
+#wordkind-footer{
+
+    padding:18px;
+
+    text-align:right;
+
+}
+
+#wk-close{
+
+    background:#64748b;
+
+    color:white;
+
+    border:none;
+
+    border-radius:999px;
+
+    padding:10px 20px;
+
+    cursor:pointer;
+
+}
+
+#wk-toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: inline-block;
+    width: auto;
+    max-width: 360px;
+
+    padding: 18px 22px;
+
+    background: #111a2e;
+    color: #fff;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+
+    font-family: Georgia, serif;
+    line-height: 1.35;
+    white-space: normal;
+
+    z-index: 2147483647;
+}
+
+.wk-toast-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.wk-toast-text {
+    font-size: 16px;
+    color: #f2f2f2;
+    white-space: nowrap;
+}
+
+@keyframes wkFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 10px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+.wk-thinking{
+    font-size:44px;
+    animation:wkFloat 1.6s ease-in-out infinite;
+}
+
+@keyframes wkFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-6px);
+    }
+}

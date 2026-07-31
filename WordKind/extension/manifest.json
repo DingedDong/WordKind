@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "WordKind",
+  "version": "0.1.0",
+  "description": "AI-powered Bible study assistant",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+"host_permissions": [
+    "http://localhost:3000/*",
+    "https://x.com/*",
+    "https://twitter.com/*"
+],
+  "background": {
+    "service_worker": "background.js"
+  },
+"content_scripts": [
+  {
+    "matches": [
+      "https://x.com/*",
+      "https://twitter.com/*"
+    ],
+    "js": [
+      "content.js"
+    ],
+    "css": [
+      "panel.css"
+    ],
+    "run_at": "document_idle"
+  }
+],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
