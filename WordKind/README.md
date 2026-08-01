@@ -1,73 +1,94 @@
 # WordKind
 
-**Think • Reflect • Rewrite**
+# Think • Reflect • Rewrite
 
-WordKind is an AI-powered Chrome browser extension currently for **X (formerly Twitter)** that helps users communicate more thoughtfully before publishing posts. It analyzes the tone of a post in real time and, when appropriate, suggests respectful rewrites while encouraging reflection through relevant Scripture.
+WordKind is an AI-powered Chrome browser extension for **X (formerly Twitter)** that helps users communicate more thoughtfully before publishing posts.
+
+As users compose a post, WordKind analyzes the text in real time and, when appropriate, suggests respectful rewrites, reflection prompts, and contextually relevant Bible verses to encourage healthier online conversations.
 
 Built for the **Gloo AI + YouVersion Hackathon**.
 
-## Current Platform Support
+---
+
+# Current Platform Support
 
 The current prototype is designed for **X (formerly Twitter)**.
 
-WordKind monitors posts before they are published, provides AI-powered rewrite suggestions using **Gloo AI Studio**, and presents contextually relevant Scripture through the **YouVersion Platform API**.
+WordKind analyzes posts before they are published and provides:
 
-The architecture is designed to support additional social media platforms in future versions.
+- AI-powered tone assessment
+- Respectful rewrite suggestions
+- Reflection prompts
+- Contextual Bible verses using the YouVersion Platform API
+
+The architecture is modular and can be extended to additional social media platforms in future versions.
+
 ---
 
-## Features
+# Features
 
-- Real-time analysis of social media posts
+- Real-time analysis of X posts before publishing
 - AI-generated respectful rewrite suggestions
 - Explains why language may be harmful
-- Reflection prompts that encourage empathy
-- Contextual Bible verses using the YouVersion Platform API
+- Reflection prompts encouraging empathy
+- Contextual Bible verses
 - One-click copy and paste workflow
-- Non-intrusive Chrome extension interface
+- Lightweight Chrome Extension
+- User always remains in control
 
 ---
 
-## Tech Stack
+# Tech Stack
 
-### Frontend
+## Frontend
 
 - HTML
 - CSS
 - JavaScript
 - Chrome Extension (Manifest V3)
 
-### Backend
+## Backend
 
 - Node.js
 - Express.js
 
-### AI
+## AI
+
+Primary
 
 - Gloo AI Studio
 
-### Scripture Integration
+Alternative
+
+- Google Gemini
+
+## Scripture
 
 - YouVersion Platform API
 
 ---
 
-## Project Structure
+# Project Structure
 
 ```
 WordKind/
 │
+├── backend/
+│   ├── server.js
+│   ├── gloo.js
+│   ├── gemini.js
+│   ├── prompt.js
+│   ├── package.json
+│   └── package-lock.json
+│
 ├── extension/
 │   ├── manifest.json
 │   ├── content.js
+│   ├── panel.js
 │   ├── panel.css
 │   ├── popup.html
 │   ├── popup.js
-│   └── icons/
-│
-├── server/
-│   ├── server.js
-│   ├── package.json
-│   └── package-lock.json
+│   └── popup.css
 │
 ├── README.md
 └── LICENSE
@@ -75,101 +96,190 @@ WordKind/
 
 ---
 
-## Installation
+# Prerequisites
 
-### 1. Clone the repository
+Before installing WordKind, ensure you have:
+
+- Google Chrome
+- Node.js 18 or newer
+- npm
+- A Gloo AI Studio API key or Google Gemini API key
+- A YouVersion Platform API key
+
+---
+
+# Installation
+
+## 1. Download the project
+
+Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/WordKind.git
+git clone https://github.com/DingedDong/WordKind.git
+```
+
+or download the ZIP from GitHub and extract it.
+
+---
+
+## 2. Open the project
+
+```bash
 cd WordKind
 ```
 
 ---
 
-### 2. Install dependencies
+## 3. Install backend dependencies
+
+Open a terminal inside the backend folder.
 
 ```bash
-cd server
+cd backend
 npm install
 ```
 
+This installs all required Node.js packages.
+
 ---
 
-### 3. Configure API Keys
+## 4. Configure API Keys
 
-Create a `.env` file inside the `server` folder.
+Create a file named
+
+```
+.env
+```
+
+inside the **backend** folder.
+
+### Option A (Recommended)
+
+Use Gloo AI Studio
 
 ```env
 GLOO_API_KEY=YOUR_GLOO_API_KEY
 YOUVERSION_API_KEY=YOUR_YOUVERSION_API_KEY
 ```
 
-> Never commit API keys to GitHub.
+### Option B (Alternative)
+
+Use Google Gemini
+
+```env
+GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+YOUVERSION_API_KEY=YOUR_YOUVERSION_API_KEY
+```
+
+Replace the placeholder values with your own API keys.
+
+**Do not commit your `.env` file to GitHub.**
 
 ---
 
-### 4. Start the backend
+## 5. Start the backend server
+
+Inside the backend folder run
 
 ```bash
 node server.js
 ```
 
-The backend starts at:
+If successful you should see something similar to
 
 ```
-http://localhost:3000
+Server running on http://localhost:3000
 ```
+
+Keep this terminal window open while using WordKind.
 
 ---
 
-### 5. Load the Chrome Extension
+## 6. Load the Chrome Extension
 
-1. Open Chrome.
-2. Navigate to:
+Open Chrome.
+
+Go to
 
 ```
 chrome://extensions
 ```
 
-3. Enable **Developer Mode**.
-4. Click **Load unpacked**.
-5. Select the **extension** folder.
+Enable
+
+```
+Developer Mode
+```
+
+Click
+
+```
+Load unpacked
+```
+
+Select the
+
+```
+extension
+```
+
+folder from the project.
+
+The WordKind extension should now appear in Chrome.
 
 ---
 
-## How It Works
+## 7. Test WordKind
 
-1. The user begins typing a social media post.
-2. WordKind monitors the text locally.
-3. The content is securely analyzed using Gloo AI Studio.
-4. If potentially harmful language is detected:
+Open
 
-   - An assessment is generated.
-   - Respectful rewrites are suggested.
-   - A reflection prompt is displayed.
-   - A relevant Bible verse is retrieved using the YouVersion Platform API.
+```
+https://x.com
+```
 
-5. The user may copy a rewritten version before publishing.
+Begin writing a post.
 
-WordKind never posts content automatically. The user remains in complete control.
+When WordKind detects language that could be more respectful, it will automatically display suggestions.
 
 ---
 
-## Example Workflow
+# How WordKind Works
+
+1. User writes a post on X.
+2. The Chrome Extension detects new text.
+3. The text is securely sent to the local backend.
+4. The backend sends the request to either:
+
+- Gloo AI Studio (recommended), or
+- Google Gemini (alternative)
+
+5. The AI returns:
+
+- Assessment
+- Three respectful rewrites
+- Reflection prompt
+
+6. The backend retrieves a relevant Bible verse using the YouVersion Platform API.
+
+7. WordKind displays everything inside the browser.
+
+8. The user may copy a rewrite before publishing.
+
+WordKind never edits or publishes posts automatically.
+
+---
+
+# Example
 
 Original
 
-> Those people are idiots and nobody should listen to them.
-
-↓
-
-WordKind analyzes the message.
+> People who disagree with me are idiots. Nobody should listen to them.
 
 ↓
 
 Suggested Rewrite
 
-> I strongly disagree with their viewpoint and believe it deserves further discussion.
+> I strongly disagree with their viewpoint, but I believe respectful discussion helps everyone better understand the issue.
 
 ↓
 
@@ -181,47 +291,70 @@ Reflection Prompt
 
 Bible Verse
 
-> "A gentle answer turns away wrath, but a harsh word stirs up anger."  
+> "A gentle answer turns away wrath, but a harsh word stirs up anger."
+>
 > Proverbs 15:1
 
 ---
 
-## Architecture
+# Architecture
 
 ```
 Chrome Extension
-        │
-        ▼
-Content Script
         │
         ▼
 Node.js Backend
         │
         ▼
 Gloo AI Studio
+or
+Google Gemini
         │
-        ├──────────────► Language Analysis
-        ├──────────────► Rewrite Suggestions
-        └──────────────► Reflection Prompt
-
-                │
-                ▼
-
+        ▼
+Assessment
+Rewrite Suggestions
+Reflection Prompt
+        │
+        ▼
 YouVersion Platform API
         │
         ▼
 Relevant Scripture
+        │
+        ▼
+WordKind Popup
 ```
 
 ---
 
-## Privacy
+# Current Limitations
 
-- No automatic posting.
-- No permanent storage of user posts.
-- Users choose whether to accept AI suggestions.
+- Currently supports **X (formerly Twitter)**.
+- Requires a locally running backend server.
+- Requires valid API keys.
+- Prototype developed for the Gloo AI + YouVersion Hackathon.
 
 ---
+
+# Future Improvements
+
+- Facebook support
+- LinkedIn support
+- Reddit support
+- Threads support
+- Bluesky support
+- Personalized communication styles
+- Multilingual support
+- Mobile browser support
+
+---
+
+# Privacy
+
+- WordKind never publishes posts automatically.
+- User approval is required before using any rewrite.
+- API keys remain local inside the `.env` file.
+- Do not upload your `.env` file to GitHub.
 
 ## Demo
 
