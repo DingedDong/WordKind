@@ -368,7 +368,7 @@ https://youtu.be/WQYuiIsa70s
 
 ## License
 
-MIT License
+This project is open source and licensed under the GNU General Public License v3.0 (GPL-3.0).
 
 ---
 
