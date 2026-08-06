@@ -173,8 +173,6 @@ YOUVERSION_API_KEY=YOUR_YOUVERSION_API_KEY
 
 Replace the placeholder values with your own API keys.
 
-**Do not commit your `.env` file to GitHub.**
-
 ---
 
 ## 5. Start the backend server
@@ -370,7 +368,7 @@ https://youtu.be/WQYuiIsa70s
 
 # License
 
-MIT License
+GPL v3 License
 
 ---
 
